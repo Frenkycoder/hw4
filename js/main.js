@@ -55,25 +55,47 @@ $('.btn__reg').on('click', function () {
             $('.autorize .form-horizontal').prepend(data);
         });
     });
+    $('.delBut').on('click', function () {
+        var userID = $('input[name=userID]').val(),
+            delBut = $('.delBut').val();
+        $.post({
+            url: '../php/show.php',
+            data: {
+                userID : userID,
+                delBut : delBut
+            }
+        }).done(function (data) {
+
+        });
+    });
+    $('.delPic').on('click', function () {
+        var logID = $('input[name=logID]').val(),
+            delPic = $('.delPic').val();
+        $.post({
+            url: '../php/showphoto.php',
+            data: {
+                logID : logID,
+                delPic : delPic
+            }
+        }).done(function (data) {
+
+        });
+    });
 
  $('.save').on('click', function () {
-     var name = $('#name').val(),
-         age = $('#age').val(),
-         desc = $('#desc').val();
-     var file_data = $('#photo').get(0).files[0];
+     var file_data = $('#photo').prop('files')[0];
      var form_data = new FormData();
-     $.ajax({
+     form_data.append('photo', file_data);
+     form_data.append('name', $('#name').val());
+     form_data.append('age', $('#age').val());
+     form_data.append('desc', $('#desc').val());
+     $.post({
          url: '../php/profile.php',
-         method: 'post',
-         data: {
-             name: name,
-             age: age,
-             desc: desc,
-             photo: form_data.append('photo', file_data)
-         },
+         dataType: 'text',
+         cache: false,
          contentType: false,
          processData: false,
-         cache: false
+         data: form_data
      }).done(function (data) {
          alert(data);
      });

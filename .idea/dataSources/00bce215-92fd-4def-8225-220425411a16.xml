@@ -32,7 +32,7 @@
     </column>
     <column id="13" parent="8" name="age">
       <Position>5</Position>
-      <DataType>date|0</DataType>
+      <DataType>mediumint(9)|0</DataType>
     </column>
     <column id="14" parent="8" name="description">
       <Position>6</Position>

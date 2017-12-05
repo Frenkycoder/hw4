@@ -23,6 +23,8 @@ if($login != '' && $pas != '') {
         $row = $check->fetch(PDO::FETCH_ASSOC );
         $pasDB = $row['password'];
         if(password_verify($pas, $pasDB)) {
+            $val = $login;
+            setcookie('log', $val, time()+3000);
             echo "<script>$(document).ready(function(){window.location.replace(\"http://d4/profile.html\");});</script>";
         } else {
             echo "Пароль не верен";
