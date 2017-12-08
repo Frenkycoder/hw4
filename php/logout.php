@@ -7,5 +7,5 @@
  */
 
 require_once 'db.php';
-//unset($_COOKIE["log"]);
+unset($_SESSION["login"]);
 header('Location: /');

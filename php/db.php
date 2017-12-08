@@ -5,6 +5,7 @@
  * Date: 16.11.2017
  * Time: 19:53
  */
+session_start();
 //DB Host
 $db_hostname = 'localhost';
 $db_database = 'reg';
